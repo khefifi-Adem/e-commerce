@@ -1,22 +1,21 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 
-export default function Layout({ title, children }) {
+export default function Layout({ title }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - Amazona' : 'Amazona'}</title>
+        <title>{title ? title + ' - Commerce' : 'Commerce'}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex min-h-screen flex-col justify-between ">
         <Header />
-        <Main>{children}</Main>
+        <Main />
         <Footer />
       </div>
     </>
