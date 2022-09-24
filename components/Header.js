@@ -1,12 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Store } from '../utils/store';
+import { useSession } from 'next-auth/react';
 
 export default function Header() {
+  const { status, data: session } = useSession();
   const { state } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
-
 
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
@@ -29,9 +30,15 @@ export default function Header() {
               )}
             </a>
           </Link>
-          <Link href="/login">
-            <a className="p-2"> Login </a>
-          </Link>
+          {status === 'loading' ? (
+            'Loading'
+          ) : session?.user ? (
+            session.user.name
+          ) : (
+            <Link href="/login">
+              <a className="p-2">Login</a>
+            </Link>
+          )}
         </div>
       </nav>
     </header>
