@@ -11,8 +11,13 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  @apply text-blue-600 hover:text-blue-800
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2  outline-none ring-indigo-300  focus:ring;
 }
 
 * {
