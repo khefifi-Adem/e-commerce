@@ -4,8 +4,12 @@ import CheckoutWizard from '../components/CheckoutWizard';
 import { useForm } from 'react-hook-form';
 import {Store} from "../utils/store";
 import Cookies from "js-cookie";
+import {useRouter} from "next/router";
 
 export default function ShippingScreen() {
+
+  const router = useRouter();
+
   const {
     handleSubmit,
     register,
@@ -45,7 +49,10 @@ export default function ShippingScreen() {
             country,
           },
         })
-    )
+    );
+
+    router.push('/payment');
+
   };
 
   return (
